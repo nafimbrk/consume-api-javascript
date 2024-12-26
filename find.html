@@ -1,0 +1,18 @@
+<script>
+  find();
+  function find() {
+    fetch("http://127.0.0.1:8000/api/mk/9", { method: "GET" })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response not ok " + response.status);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch(error => {
+          console.error("There was a problem with the fetch opertaion:", error);
+      });
+  }
+</script>

@@ -1,0 +1,32 @@
+<script>
+  update();
+  function update() {
+    fetch("http://127.0.0.1:8000/api/mk/9", {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        kode: "20",
+        nama: "anjay mabar slebew pbalap",
+        sks: 10,
+      }),
+    })
+      .then((response) => response.text())
+      .then((text) => {
+        if (text) {
+          return JSON.parse(text);
+        } else {
+          throw new Error("Empty Response");
+        }
+      })
+      .then((data) => console.log(data))
+      .catch((error) => {
+        if (error instanceof SyntaxError) {
+          console.error("JSON parsing error:", error);
+        } else {
+          console.error("Fetch error:", error);
+        }
+      });
+  }
+</script>
