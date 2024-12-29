@@ -1,0 +1,24 @@
+<script>
+    hapus();
+    function hapus() {
+      fetch("http://127.0.0.1:8000/api/mk/8", { 
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json", // Pastikan tipe konten
+        },
+      })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response not ok. Status: " + response.status);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Data berhasil dihapus:", data);
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+    }
+  </script>
+  
